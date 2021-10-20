@@ -5,6 +5,6 @@ include: "/views/**/*.view"
 
 
 explore: combined_deduped_panels_table{
-
+view_label: "Transaction Data"
 
 }
