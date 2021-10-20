@@ -8,7 +8,3 @@ explore: combined_deduped_panels_table{
 
 
 }
-
-explore: storeid_bank {}
-
-explore: storeid_card {}
