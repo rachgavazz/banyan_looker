@@ -80,6 +80,7 @@ view: combined_deduped_panels_table {
 
   dimension: optimized_transaction_date {
     type: date
+    datatype: date
     label: "Optimized Transaction Date"
     description: "A computed date (YYYY-MM-DD format) field. By default, the field contains Transaction Date and if the Transaction Date is null or erroneous then it contains the post date. If both transaction date and post date are null or erroneous, then it contains the file processing date"
     sql: CAST${TABLE}.optimized_transaction_date AS DATE ;;
