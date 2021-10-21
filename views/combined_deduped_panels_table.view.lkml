@@ -148,6 +148,12 @@ view: combined_deduped_panels_table {
     sql: CAST(${TABLE}.transaction_date AS DATE) ;;
   }
 
+  dimension_group: transaction_date_2 {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    sql: ${TABLE}.transaction_date ;;
+  }
+
   dimension: transaction_origin {
     type: string
     label: "Transaction Origin"
