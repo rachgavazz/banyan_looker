@@ -88,15 +88,17 @@ view: combined_deduped_panels_table {
 
   dimension: panel_file_created_date {
     type: date
+    datatype: date
     label: "File Created Date"
-    sql: ${TABLE}.panel_file_created_date ;;
+    sql: CAST(${TABLE}.panel_file_created_date AS DATE) ;;
   }
 
   dimension: post_date {
     type: date
+    datatype: date
     label: "Post Date"
     description: "The date (YYYY-MM-DD format) on which the transaction is posted at the financial institution."
-    sql: ${TABLE}.post_date ;;
+    sql: CAST(${TABLE}.post_date AS DATE) ;;
   }
 
   dimension: primary_merchant_name {
@@ -139,9 +141,10 @@ view: combined_deduped_panels_table {
   }
 
   dimension: transaction_date {
-    type: string
+    type: date
+    datatype: date
     label: "Transaction Date"
-    sql: ${TABLE}.transaction_date ;;
+    sql: CAST(${TABLE}.transaction_date AS DATE) ;;
   }
 
   dimension: transaction_origin {
