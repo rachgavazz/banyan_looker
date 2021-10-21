@@ -79,20 +79,20 @@ view: combined_deduped_panels_table {
   }
 
   dimension: optimized_transaction_date {
-    type: string
+    type: date
     label: "Optimized Transaction Date"
     description: "A computed date (YYYY-MM-DD format) field. By default, the field contains Transaction Date and if the Transaction Date is null or erroneous then it contains the post date. If both transaction date and post date are null or erroneous, then it contains the file processing date"
     sql: ${TABLE}.optimized_transaction_date ;;
   }
 
   dimension: panel_file_created_date {
-    type: string
+    type: date
     label: "File Created Date"
     sql: ${TABLE}.panel_file_created_date ;;
   }
 
   dimension: post_date {
-    type: string
+    type: date
     label: "Post Date"
     description: "The date (YYYY-MM-DD format) on which the transaction is posted at the financial institution."
     sql: ${TABLE}.post_date ;;
