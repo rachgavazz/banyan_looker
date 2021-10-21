@@ -151,14 +151,15 @@ view: combined_deduped_panels_table {
   dimension_group: transaction_date_2 {
     type: time
     timeframes: [date, week, month, year, raw]
-    sql: ${TABLE}.transaction_date ;;
+    sql: cast(${TABLE}.transaction_date AS DATE) ;;
+
   }
 
   dimension: transaction_origin {
     type: string
     label: "Transaction Origin"
     description: "Classification of the origin of the transaction: online, point of sale, ATM withdrawal, card transaction, and unresolved"
-    sql: CAST(${TABLE}.transaction_origin AS DATE) ;;
+    sql: ${TABLE}.transaction_origin ;;
   }
 
   dimension: unique_account_id {
