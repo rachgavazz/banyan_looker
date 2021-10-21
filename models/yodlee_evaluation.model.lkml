@@ -6,6 +6,6 @@ include: "/views/**/*.view"
 
 explore: combined_deduped_panels_table{
 label: "Transaction Data"
-sql_always_having: ${count} >= 100;;
+sql_always_having: ${count distinct ${unique_transaction_id}} >= 100;;
 
 }
