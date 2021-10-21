@@ -1,12 +1,13 @@
 view: combined_deduped_panels_table {
   sql_table_name: `focal-equinox-318517.yodlee_evaluation.combined_deduped_panels_table`
     ;;
-  view_label: "Transactions"
+  view_label:"Transactions"
 
-  dimension: account_source_type {
-    type: string
-    sql: ${TABLE}.account_source_type ;;
-  }
+
+  ##dimension: account_source_type {
+    ##type: string
+    ##sql: ${TABLE}.account_source_type ;;
+  ##}
 
   measure: amount_charged {
     type: sum
