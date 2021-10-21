@@ -148,10 +148,10 @@ view: combined_deduped_panels_table {
     sql: CAST(${TABLE}.transaction_date AS DATE) ;;
   }
 
-  dimension_group: transaction_date_2 {
+  dimension_group: optimized_transaction_date_2 {
     type: time
     timeframes: [date, week, month, year, raw]
-    sql: cast(${TABLE}.transaction_date AS DATE) ;;
+    sql: case when ${TABLE}.optimized_transaction_date = '' then '1900-01-01' else cast(${TABLE}.optimized_transaction_date AS DATE) end ;;
 
   }
 
