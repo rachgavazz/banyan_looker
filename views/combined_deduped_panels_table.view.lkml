@@ -79,12 +79,22 @@ view: combined_deduped_panels_table {
     sql: ${TABLE}.mcc_raw ;;
   }
 
-  dimension: optimized_transaction_date {
-    type: date
-    datatype: date
+  ##dimension: optimized_transaction_date {
+    ##type: date
+    ##datatype: date
+    ##label: "Optimized Transaction Date"
+    ##description: "A computed date (YYYY-MM-DD format) field. By default, the field contains Transaction Date and if the Transaction Date is null or erroneous then it contains the post date. If both transaction date and post date are null or erroneous, then it contains the file processing date"
+    ##sql: CAST(${TABLE}.optimized_transaction_date AS DATE) ;;
+  ##}
+
+
+  dimension_group: optimized_transaction_date_2 {
+    type: time
     label: "Optimized Transaction Date"
     description: "A computed date (YYYY-MM-DD format) field. By default, the field contains Transaction Date and if the Transaction Date is null or erroneous then it contains the post date. If both transaction date and post date are null or erroneous, then it contains the file processing date"
-    sql: CAST(${TABLE}.optimized_transaction_date AS DATE) ;;
+    timeframes: [date, week, month, year, raw]
+    sql: case when ${TABLE}.optimized_transaction_date = '' then '1900-01-01' else cast(${TABLE}.optimized_transaction_date AS DATE) end ;;
+
   }
 
   dimension: panel_file_created_date {
@@ -148,12 +158,6 @@ view: combined_deduped_panels_table {
     sql: CAST(${TABLE}.transaction_date AS DATE) ;;
   }
 
-  dimension_group: optimized_transaction_date_2 {
-    type: time
-    timeframes: [date, week, month, year, raw]
-    sql: case when ${TABLE}.optimized_transaction_date = '' then '1900-01-01' else cast(${TABLE}.optimized_transaction_date AS DATE) end ;;
-
-  }
 
   dimension: transaction_origin {
     type: string
