@@ -6,8 +6,6 @@ include: "/views/**/*.view"
 
 explore: combined_deduped_panels_table{
 label: "Transaction Data"
-access_filter: {
-    field: count
-    user_attribute: row_count_100
-  }
+sql_always_having: ${count} >= 100;;
+
 }
