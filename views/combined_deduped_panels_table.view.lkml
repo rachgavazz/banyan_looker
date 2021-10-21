@@ -158,7 +158,7 @@ view: combined_deduped_panels_table {
     type: string
     label: "Transaction Origin"
     description: "Classification of the origin of the transaction: online, point of sale, ATM withdrawal, card transaction, and unresolved"
-    sql: ${TABLE}.transaction_origin ;;
+    sql: CAST(${TABLE}.transaction_origin AS DATE) ;;
   }
 
   dimension: unique_account_id {
