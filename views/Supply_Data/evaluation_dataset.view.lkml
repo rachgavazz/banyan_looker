@@ -42,6 +42,7 @@ view: evaluation_dataset {
   dimension: nonscan_category {
     label: "Category"
     type: string
+    drill_fields: [nonscan_subcategory,nonscan_detail]
     sql: ${TABLE}.nonscan_category ;;
   }
 
@@ -54,6 +55,7 @@ view: evaluation_dataset {
   dimension: nonscan_subcategory {
     label: "Sub Category"
     type: string
+    drill_fields: [nonscan_detail]
     sql: ${TABLE}.nonscan_subcategory ;;
   }
 
