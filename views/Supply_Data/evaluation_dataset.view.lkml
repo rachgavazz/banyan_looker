@@ -66,6 +66,7 @@ view: evaluation_dataset {
   dimension: price {
     label: "Unit Price"
     type: number
+    value_format: "$#,##0.00"
     sql: ${TABLE}.price ;;
   }
 
@@ -91,28 +92,28 @@ view: evaluation_dataset {
   measure: subtotal_amount {
     type: sum
     label: "Subtotal"
-    value_format: "$#.00;($#.00)"
+    value_format: "$#,##0.00"
     sql: ${TABLE}.subtotal_amount ;;
   }
 
   measure: tax_amount {
     type: sum
     label: "Tax Amount"
-    value_format: "$#.00;($#.00)"
+    value_format: "$#,##0.00"
     sql: ${TABLE}.tax_amount ;;
   }
 
   measure: tip_amount {
     type: sum
     label: "Tip Amount"
-    value_format: "$#.00;($#.00)"
+    value_format: "$#,##0.00"
     sql: ${TABLE}.tip_amount ;;
   }
 
   measure: total_amount {
     type: sum
     label: "Total Amount"
-    value_format: "$#.00;($#.00)"
+    value_format: "$#,##0.00"
     sql: ${TABLE}.total_amount ;;
   }
 
