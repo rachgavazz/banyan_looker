@@ -22,7 +22,6 @@ view: transactions {
     #type: sum
     #value_format: "$#,##0.00"
     #sql: ${TABLE}.amount_charged ;;
-    #sql_distinct_key: ${TABLE}.transaction_id ;;
   #}
 
   measure: grand_total_amount {
@@ -30,7 +29,6 @@ view: transactions {
     type: sum
     value_format: "$#,##0.00"
     sql: ${TABLE}.grand_total_amount ;;
-    sql_distinct_key: ${TABLE}.transaction_id ;;
   }
 
   dimension: payment_last_four {
