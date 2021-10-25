@@ -12,7 +12,7 @@ view: combined_deduped_panels_table {
   measure: amount_charged {
     type: sum
     label: "Amount Charged"
-    value_format_name: decimal_2
+    value_format: "$#,##0.00"
     sql: ${TABLE}.amount_charged ;;
   }
 
