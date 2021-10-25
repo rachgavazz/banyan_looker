@@ -36,7 +36,7 @@ view: stores {
 
   dimension: store_name {
     type: string
-    label: "Storey Name"
+    label: "Store Name"
     sql: ${TABLE}.store_name ;;
   }
 
