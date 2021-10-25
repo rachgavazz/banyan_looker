@@ -6,46 +6,54 @@ view: stores {
   dimension: store_id {
     primary_key: yes
     type: number
+    description: "Store ID"
     sql: ${TABLE}.store_id ;;
   }
 
   dimension: city {
     type: string
+    label: "City"
     sql: ${TABLE}.city ;;
   }
 
   dimension: merchant_name {
     type: string
+    label: "Merchant Name"
     sql: ${TABLE}.merchant_name ;;
   }
 
   dimension: phone_number {
     type: string
+    label: "Phone Number"
     sql: ${TABLE}.phone_number ;;
   }
 
   dimension: state {
+    label: "State"
     type: string
     sql: ${TABLE}.state ;;
   }
 
   dimension: store_name {
     type: string
+    label: "Storey Name"
     sql: ${TABLE}.store_name ;;
   }
 
   dimension: street_address {
     type: string
+    label: "Street Address"
     sql: ${TABLE}.street_address ;;
   }
 
-  dimension: unix_updated_at {
-    type: number
-    sql: ${TABLE}.unix_updated_at ;;
-  }
+  #dimension: unix_updated_at {
+    #type: number
+    #sql: ${TABLE}.unix_updated_at ;;
+  #}
 
   dimension: zip_code {
     type: zipcode
+    label: "ZipCode"
     sql: ${TABLE}.zip_code ;;
   }
 
