@@ -17,19 +17,19 @@ view: transactions {
     sql: ${TABLE}.acquirer_reference_number ;;
   }
 
-  measure: amount_charged {
-    label: "Amount"
-    type: sum
-    value_format: "$#,##0.00"
-    sql: ${TABLE}.amount_charged ;;
-  }
-
-  #measure: grand_total_amount {
-    #label: "Total Amount"
+  #measure: amount_charged {
+    #label: "Amount"
     #type: sum
     #value_format: "$#,##0.00"
-    #sql: ${TABLE}.grand_total_amount ;;
+    #sql: ${TABLE}.amount_charged ;;
   #}
+
+  measure: grand_total_amount {
+    label: "Total Amount"
+    type: sum
+    value_format: "$#,##0.00"
+    sql: ${TABLE}.grand_total_amount ;;
+  }
 
   dimension: payment_last_four {
     label: "Last 4"
