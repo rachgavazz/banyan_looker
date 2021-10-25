@@ -8,11 +8,17 @@ include: "/views/Supply_Data/*.view.lkml"                # include all views in 
 # # and define the joins that connect them together.
 #
  explore: transactions {
+   label: "Transaction Level"
    join: stores {
      relationship: many_to_one
      sql_on: ${transactions.store_id} = ${stores.store_id} ;;
    }
 }
+
+  explore: evaluation_dataset {
+    label: "Item Level"
+
+  }
 #   join: users {
 #     relationship: many_to_one
 #     sql_on: ${users.id} = ${orders.user_id} ;;
