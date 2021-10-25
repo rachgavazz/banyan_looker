@@ -31,6 +31,7 @@ view: stores {
   dimension: state {
     label: "State"
     type: string
+    map_layer_name: us_states
     sql: ${TABLE}.state ;;
   }
 
@@ -53,7 +54,7 @@ view: stores {
 
   dimension: zip_code {
     type: zipcode
-    label: "ZipCode"
+    label: "Zip Code"
     sql: ${TABLE}.zip_code ;;
   }
 
