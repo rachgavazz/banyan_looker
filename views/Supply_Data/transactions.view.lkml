@@ -26,8 +26,9 @@ view: transactions {
 
   measure: grand_total_amount {
     label: "Total Amount"
-    type: sum
+    type: sum_distinct
     value_format: "$#,##0.00"
+    sql_distinct_key: ${transaction_id} ;;
     sql: ${TABLE}.grand_total_amount ;;
   }
 
