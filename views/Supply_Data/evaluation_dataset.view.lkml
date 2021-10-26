@@ -113,9 +113,10 @@ view: evaluation_dataset {
   }
 
   measure: total_amount {
-    type: sum
+    type: sum_distinct
     label: "Total Amount"
     value_format: "$#,##0.00"
+    sql_distinct_key: ${hashed_receipt_id} ;;
     sql: ${TABLE}.total_amount ;;
   }
 
