@@ -6,41 +6,51 @@ view: sample_data_102721 {
   measure: amount {
     type: sum
     value_format: "$#,##0.00"
+    description: "Amount"
+    label: "Amount"
     sql: ${TABLE}.amount ;;
   }
 
   dimension: lastfour {
+    description: "last four digits on credit card"
+    label: "Last4"
     type: string
     sql: ${TABLE}.lastfour ;;
   }
 
   dimension: merchantaddress {
     type: string
+    label: "Address"
     sql: ${TABLE}.merchantaddress ;;
   }
 
   dimension: merchantcity {
     type: string
+    label: "City"
     sql: ${TABLE}.merchantcity ;;
   }
 
   dimension: merchantname {
     type: string
+    label: "Merchant Name"
     sql: ${TABLE}.merchantname ;;
   }
 
   dimension: merchantstate {
     type: string
+    label: "State"
     sql: ${TABLE}.merchantstate ;;
   }
 
   dimension: network {
     type: string
+    label: "Scheme"
     sql: ${TABLE}.network ;;
   }
 
   dimension_group: transactiondate {
     type: time
+    label: "Date"
     timeframes: [
       raw,
       date,
@@ -56,11 +66,13 @@ view: sample_data_102721 {
 
   dimension: zipcode {
     type: zipcode
+    label: "Zip Code"
     sql: ${TABLE}.zipcode ;;
   }
 
   measure: count {
     type: count
+    label: "Count"
     drill_fields: [merchantname]
   }
 }
