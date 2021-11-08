@@ -4,6 +4,7 @@ view: combined_deduped_panels_table {
   view_label:"Transactions"
 
 
+
   ##dimension: account_source_type {
     ##type: string
     ##sql: ${TABLE}.account_source_type ;;
