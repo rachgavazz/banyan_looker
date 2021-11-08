@@ -15,7 +15,8 @@ sql_always_having: count(distinct ${unique_mem_id}) >= 100;;
 #label: "Where Else Shoppers"
 
 join: where_else_derived_table {
-  relationship: one_to_many
+  relationship: many_to_one
+  type: inner
   sql_on: ${where_else_derived_table.user_id} = ${combined_deduped_panels_table.unique_mem_id} ;;
 }
 }
