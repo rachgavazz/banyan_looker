@@ -216,11 +216,11 @@ view: combined_deduped_panels_table {
   }
 
 
-  parameter: select_merchant {
-    type: string
-    label: "Starting Merchant"
-    suggest_dimension: primary_merchant_name
-  }
+ # parameter: select_merchant {
+  #  type: string
+   # label: "Starting Merchant"
+    #suggest_dimension: primary_merchant_name
+ # }
 
   #parameter: enter_min_amount_spent {
    # label: "Minimum Amount To Qualify"
@@ -228,12 +228,12 @@ view: combined_deduped_panels_table {
   #  default_value: "10"
   #}
 
-  dimension: is_user_in_list_merchant {
-    label: "Where Else Shoppers Merchant"
-    type: yesno
-    sql: ${unique_mem_id} IN (SELECT unique_mem_id FROM combined_deduped_panels_table
-      WHERE merchant = {% parameter ${primary_merchant_name} %});;
-  }
+  #dimension: is_user_in_list_merchant {
+   # label: "Where Else Shoppers Merchant"
+    #type: yesno
+    #sql: ${unique_mem_id} IN (SELECT unique_mem_id FROM combined_deduped_panels_table
+     # WHERE merchant = {% parameter ${primary_merchant_name} %});;
+#  }
 
   #measure: is_user_in_list_amount {
   #  label: "Where Else Shoppers Amount"
