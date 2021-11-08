@@ -7,6 +7,7 @@ view: where_else_derived_table {
          SUM(amount_charged) as amount_charged
        FROM combined_deduped_panels_table
        GROUP BY user_id, merchant_name
+       HAVING sum(amount_charged)>100
        ;;
    }
 #
