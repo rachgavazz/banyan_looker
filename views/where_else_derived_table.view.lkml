@@ -13,6 +13,7 @@ view: where_else_derived_table {
    }
   filter: base_merchant {
     type: string
+    description: "Use this filter to see where else your base merchant shoppers are shopping"
   }
 
   dimension: user_id {
