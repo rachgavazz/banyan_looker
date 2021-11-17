@@ -66,9 +66,8 @@ view: transactions {
     #sql: ${TABLE}.tax_amount ;;
   #}
 
-dimension_group:transaction_date_time {
-    type: time
-    timeframes: [date,month, day_of_month]
+dimension:transaction_date_time {
+    type: date_time
     label: "Transaction Date"
     sql: ${TABLE}.transaction_date_time ;;
   }
