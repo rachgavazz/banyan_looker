@@ -69,7 +69,7 @@ view: transactions {
 dimension:transaction_date_time {
     type: date_time
     label: "Transaction Date"
-    sql: ${TABLE}.transaction_date_time ;;
+    sql: date(${TABLE}.transaction_date_time) ;;
   }
 
   #dimension: unix_updated_at {
