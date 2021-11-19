@@ -1,8 +1,8 @@
 connection: "bigquery_focal_equinox_318517"
 
-#include: "/views/k_transaction_data/*.view.lkml"
+include: "/views/k_transaction_data/*.view.lkml"
 #include: # include all views in the views/ folder in this project
-include: "/**/*.view.lkml"                 # include all views in this project
+#include: "/**/*.view.lkml"                 # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 
 # # Select the views that should be a part of this model,
