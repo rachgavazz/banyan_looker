@@ -5,7 +5,7 @@ view: where_else_derived_table_k {
          userid as user_id,
          SUM(amount) as amount
        FROM sample_data_v1_111221
-       WHERE {% condition base_merchant %} combined_deduped_panels_table.merchant_name {% endcondition %}
+       WHERE {% condition base_merchant %} sample_data_v1_111221.merchantname {% endcondition %}
        GROUP BY user_id
        HAVING amount >100
        ;;
