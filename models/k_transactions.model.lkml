@@ -7,7 +7,7 @@ include: "/views/k_transaction_data/*.view.lkml"               # include all vie
 # # Select the views that should be a part of this model,
 # # and define the joins that connect them together.
 #
- explore:  sample_data_102721 {
+ explore:  sample_data_v1_111221 {
    label: "Sample Transaction Data"
  }
 
