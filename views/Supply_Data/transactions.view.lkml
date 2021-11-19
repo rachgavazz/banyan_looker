@@ -66,11 +66,18 @@ view: transactions {
     #sql: ${TABLE}.tax_amount ;;
   #}
 
-dimension:transaction_date_time {
-    type: date_time
-    label: "Transaction Date"
-    sql: date(${TABLE}.transaction_date_time) ;;
+  dimension_group: transaction_date_time {
+    type: time
+    sql: TIMESTAMP(${TABLE}.transaction_date_time) ;;
   }
+
+
+  #dimension_group: transaction_date_time {
+   # type: time
+   # datatype: date
+   # label: "Transaction"
+   # sql: ${TABLE}.transaction_date_time ;;
+  #}
 
   #dimension: unix_updated_at {
     #type: number
