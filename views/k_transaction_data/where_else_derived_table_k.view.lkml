@@ -2,11 +2,11 @@ view: where_else_derived_table_k {
     label: "Merchant Filter"
     derived_table: {
       sql: SELECT
-         userid as user_id,
+         userid as userid,
          SUM(amount) as amount
-       FROM sample_data_v1_111221
+       FROM focal-equinox-318517.klover.sample_data_v1_111221
        WHERE {% condition base_merchant %} sample_data_v1_111221.merchantname {% endcondition %}
-       GROUP BY user_id
+       GROUP BY userid
        HAVING amount >100
        ;;
     }
@@ -15,16 +15,16 @@ view: where_else_derived_table_k {
       description: "Use this filter to see where else your base merchant shoppers are shopping"
     }
 
-    dimension: user_id {
+    dimension: userid {
       description: "Unique ID for each user"
       type: string
-      sql: ${TABLE}.user_id ;;
+      sql: sample_data_v1_111221.user_id ;;
     }
 
 
     measure: amount {
       description: "Amount Purchased"
       type: sum
-      sql: ${TABLE}.amount ;;
+      sql: sample_data_v1_111221.amount ;;
     }
   }

@@ -9,13 +9,13 @@ include: "/views/k_transaction_data/*.view.lkml"
 # # and define the joins that connect them together.
 #
  explore:  sample_data_v1_111221 {
-   label: "Sample Transaction Data"
+   label: "Transaction Data"
   sql_always_having: count(distinct ${userid}) >= 100;;
 
   join: where_else_derived_table_k {
     relationship: many_to_one
     type: inner
-    sql_on: ${where_else_derived_table_k.user_id} = ${sample_data_v1_111221.userid} ;;
+    sql_on: ${where_else_derived_table_k.userid} = ${sample_data_v1_111221.userid} ;;
   }
 
  }
