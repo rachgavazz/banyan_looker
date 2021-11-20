@@ -8,7 +8,7 @@ include: "/views/k_transaction_data/*.view.lkml"                # include all vi
 # # and define the joins that connect them together.
 #
  explore: sample_data_v1_111221 {
-  sql_always_having: count(distinct(${userid})>=100  ;;
+  sql_always_having: count(distinct(${userid}))>=100  ;;
   label: "Klover Transactions"
 
   join: where_else_derived_table_klover {
