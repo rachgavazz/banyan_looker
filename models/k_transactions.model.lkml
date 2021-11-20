@@ -12,11 +12,6 @@ include: "/views/k_transaction_data/*.view.lkml"
    label: "Transaction Data"
   sql_always_having: count(distinct ${userid}) >= 100;;
 
-  join: where_else_derived_table_k {
-    relationship: many_to_one
-    type: inner
-    sql_on: ${where_else_derived_table_k.userid} = ${sample_data_v1_111221.userid} ;;
-  }
 
  }
 
