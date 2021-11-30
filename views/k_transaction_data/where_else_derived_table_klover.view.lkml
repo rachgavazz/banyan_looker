@@ -3,6 +3,7 @@ view: where_else_derived_table_klover {
   label: "Klover Merchant Name"
 
 
+
   derived_table: {
      sql: SELECT
          userid as user_id
