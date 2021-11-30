@@ -1,3 +1,4 @@
+
 view: where_else_derived_table_klover {
   label: "Klover Merchant Name"
 
@@ -6,7 +7,7 @@ view: where_else_derived_table_klover {
      sql: SELECT
          userid as user_id
          , sum(amount) as amount
-       FROM sample_data_v1_111221
+       FROM `focal-equinox-318517.klover.sample_data_v1_111221`
        WHERE {% condition base_merchant %} sample_data_v1_111221.merchantname {% endcondition %}
        GROUP BY userid
        Having sum(amount)>100

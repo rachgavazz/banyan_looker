@@ -73,10 +73,9 @@ view: evaluation_dataset {
   }
 
   dimension_group: purchase_ts {
-    label: "Purchase Timestamp"
     type: time
-    timeframes: [date, day_of_month, hour, week, month, year, raw]
-    sql: ${TABLE}.purchase_ts ;;
+    label: "Purchase Timestamp"
+    sql: TIMESTAMP(${TABLE}.purchase_ts) ;;
   }
 
   dimension: quantity {
