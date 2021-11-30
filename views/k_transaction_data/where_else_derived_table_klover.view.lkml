@@ -6,10 +6,10 @@ view: where_else_derived_table_klover {
 
   derived_table: {
      sql: SELECT
-         userid as user_id,
-         sum(amount) as amount
+         userid as userid,
+         sum(amount) as purchase_amount
        FROM `focal-equinox-318517.klover.sample_data_v1_111221`
-       WHERE {% condition base_merchant %} focal-equinox-318517.klover.sample_data_v1_111221.merchantname {% endcondition %}
+       WHERE {% condition base_merchant %} merchantname {% endcondition %}
        GROUP BY userid
        Having sum(amount)>100
        ;;
