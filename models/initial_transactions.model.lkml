@@ -6,7 +6,7 @@ include: "/views/where_else_derived_table.view"
 
 
 explore: combined_deduped_panels_table{
-label: "Transaction Data"
+label: "Yodlee Transaction Data"
 sql_always_having: count(distinct ${unique_mem_id}) >= 100;;
 
 
