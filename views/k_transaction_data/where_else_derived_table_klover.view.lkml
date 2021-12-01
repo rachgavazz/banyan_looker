@@ -1,6 +1,6 @@
 
 view: where_else_derived_table_klover {
-  label: "Klover Merchant Name"
+  label: "Overlap Analysis: Merchant Name"
 
 
 
