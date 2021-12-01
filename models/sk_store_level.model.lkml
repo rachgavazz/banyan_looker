@@ -13,14 +13,12 @@ include: "/views/Supply_Data/*.view.lkml"                # include all views in 
      relationship: many_to_one
      sql_on: ${transactions.store_id} = ${stores.store_id} ;;
    }
+   join: zip_to_dma {
+     relationship: many_to_one
+     sql_on: ${stores.zip_code} = ${zip_to_dma.zip_co};;
+   }
 }
-
   explore: evaluation_dataset {
     label: "Item Level"
 
   }
-#   join: users {
-#     relationship: many_to_one
-#     sql_on: ${users.id} = ${orders.user_id} ;;
-#   }
-# }
