@@ -1,7 +1,7 @@
 view: sample_data_v1_111221 {
   sql_table_name: `focal-equinox-318517.klover.sample_data_v1_111221`
     ;;
-    label: "Cross Merchant Transactions"
+    label: "All Merchant Transactions"
 
   #dimension: accountid {
    # type: string
