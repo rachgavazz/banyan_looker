@@ -14,9 +14,9 @@ view: zip_to_dma {
   }
 
   dimension: zip_co {
-    type: number
+    type: string
     primary_key: yes
-    sql: ${TABLE}.zip_co ;;
+    sql: CAST(${TABLE}.zip_co AS STRING) ;;
   }
 
   measure: count {
