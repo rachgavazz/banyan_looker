@@ -5,6 +5,7 @@ view: zip_to_dma {
 
   dimension: dma_code {
     type: number
+    label: "DMA code"
     sql: ${TABLE}.dma_code ;;
   }
 
