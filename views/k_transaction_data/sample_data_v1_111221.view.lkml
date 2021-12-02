@@ -11,6 +11,7 @@ view: sample_data_v1_111221 {
 
   measure: amount {
     type: sum
+    value_format: "$#,##0.00"
     sql: ${TABLE}.amount ;;
     label: "Purchase Amount"
   }
