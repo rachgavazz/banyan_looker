@@ -96,6 +96,7 @@ view: sample_data_v1_111221 {
     ]
     convert_tz: no
     datatype: date
+    label: " "
     sql: ${TABLE}.transactiondate ;;
   }
 

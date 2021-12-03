@@ -20,8 +20,7 @@ view: where_else_derived_table_klover {
   }
 
    dimension: userid {
-     description: "Unique ID for each user that has ordered"
-     type: string
+    type: string
      sql: ${TABLE}.userid ;;
    }
 
