@@ -187,7 +187,7 @@ view: transaction {
     sql:  CASE
           WHEN ${TABLE}.authorization_code = '' and ${TABLE}.arn  !=  '' then 'Missing authorization code'
           WHEN ${TABLE}.authorization_code != '' and ${TABLE}.arn  =  '' then 'Missing ARN'
-          WHEN ${TABLE}.authorization_code = '' and ${TABLE}.arn  =  '' then 'Missing ARN and autorization code'
+          WHEN ${TABLE}.authorization_code = '' and ${TABLE}.arn  =  '' then 'Missing ARN and authorization code'
           ELSE 'Full info'
           END;;
   }
