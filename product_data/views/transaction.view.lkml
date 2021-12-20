@@ -167,4 +167,9 @@ view: transaction {
     type: count
     drill_fields: [source_transaction_id]
   }
+
+  measure: number_of_unique_consumers {
+    type: count_distinct
+    sql: ${TABLE}.source_consumer_token ;;
+  }
 }
