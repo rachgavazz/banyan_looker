@@ -172,4 +172,9 @@ view: transaction {
     type: count_distinct
     sql: ${TABLE}.source_consumer_token ;;
   }
+
+  measure: number_of_unique_transaction_providers {
+    type: count_distinct
+    sql:  ${TABLE}.source_id ;;
+  }
 }
