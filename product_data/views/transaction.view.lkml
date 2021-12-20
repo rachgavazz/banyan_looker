@@ -168,6 +168,11 @@ view: transaction {
     drill_fields: [source_transaction_id]
   }
 
+  measure: number_of_unique_transactions {
+    type: count_distinct
+    sql:  ${TABLE}.id ;;
+  }
+
   measure: number_of_unique_consumers {
     type: count_distinct
     sql: ${TABLE}.source_consumer_token ;;
@@ -176,5 +181,14 @@ view: transaction {
   measure: number_of_unique_transaction_providers {
     type: count_distinct
     sql:  ${TABLE}.source_id ;;
+  }
+
+  dimension: matchable_transaction {
+    sql:  CASE
+          WHEN ${TABLE}.authorization_code = '' and ${TABLE}.arn  !=  '' then 'Missing authorization code'
+          WHEN ${TABLE}.authorization_code != '' and ${TABLE}.arn  =  '' then 'Missing ARN'
+          WHEN ${TABLE}.authorization_code = '' and ${TABLE}.arn  =  '' then 'Missing ARN and autorization code'
+          ELSE 'Full info'
+          END;;
   }
 }

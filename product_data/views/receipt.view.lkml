@@ -177,4 +177,24 @@ view: receipt {
     type: count
     drill_fields: [id]
   }
+
+  measure: number_of_unique_receipts {
+    type: count_distinct
+    sql:  ${TABLE}.id ;;
+  }
+
+  measure: number_of_unique_receipt_providers {
+    type: count_distinct
+    sql:  ${TABLE}.merchant_id ;;
+  }
+
+
+  dimension: matchable_receipt {
+    sql:  CASE
+    WHEN ${TABLE}.authorization_code = '' and ${TABLE}.arn  !=  '' then 'Missing authorization code'
+    WHEN ${TABLE}.authorization_code != '' and ${TABLE}.arn  =  '' then 'Missing ARN'
+    WHEN ${TABLE}.authorization_code = '' and ${TABLE}.arn  =  '' then 'Missing ARN and autorization code'
+    ELSE 'Full info'
+    END;;
+  }
 }
