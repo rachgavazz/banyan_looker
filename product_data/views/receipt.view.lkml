@@ -178,6 +178,11 @@ view: receipt {
     drill_fields: [id]
   }
 
+  measure: sum_gmv {
+    type: sum
+    sql: ${TABLE}.total_amount ;;
+  }
+
   measure: number_of_unique_receipts {
     type: count_distinct
     sql:  ${TABLE}.id ;;
