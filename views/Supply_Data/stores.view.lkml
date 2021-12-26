@@ -1,4 +1,5 @@
 view: stores {
+  label: "Store Detail"
   sql_table_name: `focal-equinox-318517.skupos_s3_transfer_test.stores`
     ;;
   drill_fields: [store_id]
@@ -7,7 +8,7 @@ view: stores {
     primary_key: yes
     type: number
     description: "Store ID"
-    sql: ${TABLE}.store_id ;;
+    sql:${TABLE}.store_id ;;
   }
 
   dimension: city {

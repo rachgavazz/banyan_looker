@@ -12,5 +12,9 @@ include: "/views/Supply_Data/*.view.lkml"              # include all views in th
    join : items_auth {
      relationship: one_to_many
      sql_on: ${transactions_auth.transaction_id} = ${items_auth.transaction_id} ;;
+    }
+   join: stores {
+     relationship: one_to_many
+     sql_on: ${transactions_auth.store_id} = ${stores.store_id} ;;
    }
   }
