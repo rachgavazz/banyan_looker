@@ -7,9 +7,10 @@ include: "/views/Supply_Data/*.view.lkml"              # include all views in th
 # # Select the views that should be a part of this model,
 # # and define the joins that connect them together.
 #
- explore: transactions {
-   join : items {
+ explore: transactions_auth {
+   label: "Merchant Data"
+   join : items_auth {
      relationship: one_to_many
-     sql_on: ${transactions.transaction_id} = ${items.transaction_id} ;;
+     sql_on: ${transactions_auth.transaction_id} = ${items_auth.transaction_id} ;;
    }
   }
