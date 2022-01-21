@@ -3,7 +3,6 @@ connection: "bigquery_product_metrics"
 include: "/product_metrics/views/match.view.lkml"
 
 explore: match_metrics {
-  hidden: yes
 
   join: match__metadata {
     view_label: "Match: Metadata"
