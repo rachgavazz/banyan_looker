@@ -1,23 +1,23 @@
 # Un-hide and use this explore, or copy the joins into another explore, to get all the fully nested relationships from this view
-explore: match {
-  hidden: yes
+# explore: receipt_metrics {
+#   hidden: yes
 
-  join: match__metadata {
-    view_label: "Match: Metadata"
-    sql: LEFT JOIN UNNEST(${match.metadata}) as match__metadata ;;
-    relationship: one_to_many
-  }
-}
+#   join: receipt__metadata {
+#     view_label: "Receipt: Metadata"
+#     sql: LEFT JOIN UNNEST(${receipt_metrics.metadata}) as receipt__metadata ;;
+#     relationship: one_to_many
+#   }
+# }
 
-view: match {
-  sql_table_name: `production-deploy-env.product_metrics.match`
+view: receipt_metrics {
+  sql_table_name: `production-deploy-env.product_metrics.receipt`
     ;;
-  drill_fields: [match_id]
+  drill_fields: [byn_receipt_id]
 
-  dimension: match_id {
+  dimension: byn_receipt_id {
     primary_key: yes
     type: string
-    sql: ${TABLE}.match_id ;;
+    sql: ${TABLE}.byn_receipt_id ;;
   }
 
   dimension_group: _partitiondate {
@@ -69,7 +69,12 @@ view: match {
     sql: ${TABLE}.event_ts ;;
   }
 
-  dimension_group: match_ts {
+  dimension: metadata {
+    hidden: yes
+    sql: ${TABLE}.metadata ;;
+  }
+
+  dimension_group: purchase_ts {
     type: time
     timeframes: [
       raw,
@@ -80,12 +85,21 @@ view: match {
       quarter,
       year
     ]
-    sql: ${TABLE}.match_ts ;;
+    sql: ${TABLE}.purchase_ts ;;
   }
 
-  dimension: metadata {
-    hidden: yes
-    sql: ${TABLE}.metadata ;;
+  dimension_group: received_ts {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.received_ts ;;
   }
 
   dimension: schema {
@@ -95,20 +109,20 @@ view: match {
 
   measure: count {
     type: count
-    drill_fields: [match_id]
+    drill_fields: [byn_receipt_id]
   }
 }
 
-view: match__metadata {
+view: receipt__metadata {
   dimension: key {
     type: string
     sql: key ;;
   }
 
-  dimension: match__metadata {
+  dimension: receipt__metadata {
     type: string
     hidden: yes
-    sql: match__metadata ;;
+    sql: receipt__metadata ;;
   }
 
   dimension: value {

@@ -1,15 +1,15 @@
 # Un-hide and use this explore, or copy the joins into another explore, to get all the fully nested relationships from this view
-explore: transaction {
-  hidden: yes
+# explore: transaction_metrics {
+#   hidden: yes
 
-  join: transaction__metadata {
-    view_label: "Transaction: Metadata"
-    sql: LEFT JOIN UNNEST(${transaction.metadata}) as transaction__metadata ;;
-    relationship: one_to_many
-  }
-}
+#   join: transaction__metadata {
+#     view_label: "Transaction: Metadata"
+#     sql: LEFT JOIN UNNEST(${transaction_metrics.metadata}) as transaction__metadata ;;
+#     relationship: one_to_many
+#   }
+# }
 
-view: transaction {
+view: transaction_metrics {
   sql_table_name: `production-deploy-env.product_metrics.transaction`
     ;;
   drill_fields: [byn_transaction_id]
