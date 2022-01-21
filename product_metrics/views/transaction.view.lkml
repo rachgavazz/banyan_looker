@@ -1,23 +1,23 @@
 # Un-hide and use this explore, or copy the joins into another explore, to get all the fully nested relationships from this view
-# explore: match_metrics {
+# explore: transaction {
 #   hidden: yes
 
-#   join: match__metadata {
-#     view_label: "Match: Metadata"
-#     sql: LEFT JOIN UNNEST(${match_metrics.metadata}) as match__metadata ;;
+#   join: transaction__metadata {
+#     view_label: "Transaction: Metadata"
+#     sql: LEFT JOIN UNNEST(${transaction.metadata}) as transaction__metadata ;;
 #     relationship: one_to_many
 #   }
 # }
 
-view: match_metrics {
-  sql_table_name: `production-deploy-env.product_metrics.match`
+view: transaction_metrics {
+  sql_table_name: `production-deploy-env.product_metrics.transaction`
     ;;
-  drill_fields: [match_id]
+  drill_fields: [transaction_id]
 
-  dimension: match_id {
+  dimension: transaction_id {
     primary_key: yes
     type: string
-    sql: ${TABLE}.match_id ;;
+    sql: ${TABLE}.transaction_id ;;
   }
 
   dimension_group: _partitiondate {
@@ -50,13 +50,9 @@ view: match_metrics {
     sql: ${TABLE}._PARTITIONTIME ;;
   }
 
-  dimension: byn_partner_id {
-    type: number
-    sql: ${TABLE}.byn_partner_id ;;
-  }
-
   dimension_group: event_ts {
     type: time
+    description: "bq-datetime"
     timeframes: [
       raw,
       time,
@@ -69,8 +65,14 @@ view: match_metrics {
     sql: ${TABLE}.event_ts ;;
   }
 
-  dimension_group: match_ts {
+  dimension: metadata {
+    hidden: yes
+    sql: ${TABLE}.metadata ;;
+  }
+
+  dimension_group: purchase_ts {
     type: time
+    description: "bq-datetime"
     timeframes: [
       raw,
       time,
@@ -80,12 +82,22 @@ view: match_metrics {
       quarter,
       year
     ]
-    sql: ${TABLE}.match_ts ;;
+    sql: ${TABLE}.purchase_ts ;;
   }
 
-  dimension: metadata {
-    hidden: yes
-    sql: ${TABLE}.metadata ;;
+  dimension_group: received_ts {
+    type: time
+    description: "bq-datetime"
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.received_ts ;;
   }
 
   dimension: schema {
@@ -93,22 +105,27 @@ view: match_metrics {
     sql: ${TABLE}.schema ;;
   }
 
+  dimension: source_id {
+    type: number
+    sql: ${TABLE}.source_id ;;
+  }
+
   measure: count {
     type: count
-    drill_fields: [match_id]
+    drill_fields: [transaction_id]
   }
 }
 
-view: match__metadata {
+view: transaction__metadata {
   dimension: key {
     type: string
     sql: key ;;
   }
 
-  dimension: match__metadata {
+  dimension: transaction__metadata {
     type: string
     hidden: yes
-    sql: match__metadata ;;
+    sql: transaction__metadata ;;
   }
 
   dimension: value {

@@ -1,23 +1,23 @@
 # Un-hide and use this explore, or copy the joins into another explore, to get all the fully nested relationships from this view
-# explore: transaction_metrics {
+# explore: receipt {
 #   hidden: yes
 
-#   join: transaction__metadata {
-#     view_label: "Transaction: Metadata"
-#     sql: LEFT JOIN UNNEST(${transaction_metrics.metadata}) as transaction__metadata ;;
+#   join: receipt__metadata {
+#     view_label: "Receipt: Metadata"
+#     sql: LEFT JOIN UNNEST(${receipt.metadata}) as receipt__metadata ;;
 #     relationship: one_to_many
 #   }
 # }
 
-view: transaction_metrics {
-  sql_table_name: `production-deploy-env.product_metrics.transaction`
+view: receipt_metrics {
+  sql_table_name: `production-deploy-env.product_metrics.receipt`
     ;;
-  drill_fields: [byn_transaction_id]
+  drill_fields: [receipt_id]
 
-  dimension: byn_transaction_id {
+  dimension: receipt_id {
     primary_key: yes
     type: string
-    sql: ${TABLE}.byn_transaction_id ;;
+    sql: ${TABLE}.receipt_id ;;
   }
 
   dimension_group: _partitiondate {
@@ -50,13 +50,9 @@ view: transaction_metrics {
     sql: ${TABLE}._PARTITIONTIME ;;
   }
 
-  dimension: byn_partner_id {
-    type: number
-    sql: ${TABLE}.byn_partner_id ;;
-  }
-
   dimension_group: event_ts {
     type: time
+    description: "bq-datetime"
     timeframes: [
       raw,
       time,
@@ -76,6 +72,7 @@ view: transaction_metrics {
 
   dimension_group: purchase_ts {
     type: time
+    description: "bq-datetime"
     timeframes: [
       raw,
       time,
@@ -90,6 +87,7 @@ view: transaction_metrics {
 
   dimension_group: received_ts {
     type: time
+    description: "bq-datetime"
     timeframes: [
       raw,
       time,
@@ -107,22 +105,27 @@ view: transaction_metrics {
     sql: ${TABLE}.schema ;;
   }
 
+  dimension: source_id {
+    type: number
+    sql: ${TABLE}.source_id ;;
+  }
+
   measure: count {
     type: count
-    drill_fields: [byn_transaction_id]
+    drill_fields: [receipt_id]
   }
 }
 
-view: transaction__metadata {
+view: receipt__metadata {
   dimension: key {
     type: string
     sql: key ;;
   }
 
-  dimension: transaction__metadata {
+  dimension: receipt__metadata {
     type: string
     hidden: yes
-    sql: transaction__metadata ;;
+    sql: receipt__metadata ;;
   }
 
   dimension: value {
