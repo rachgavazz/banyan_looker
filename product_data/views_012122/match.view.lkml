@@ -83,6 +83,13 @@ view: match {
     sql: ${TABLE}.merchant_partner_id ;;
   }
 
+  dimension: match_status {
+    sql:  CASE
+          WHEN ${TABLE}.id IS NOT NULL THEN 'Matched'
+          ELSE 'Unmatched'
+          END;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id]
